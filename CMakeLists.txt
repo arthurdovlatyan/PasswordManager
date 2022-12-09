@@ -14,10 +14,21 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
+
+#find_package(Boost)
+
+#if(Boost_FOUND)
+#    include_directories(${Boost_INCLUDE_DIRS})
+#    qt_add_executable(PasswordGenerator MANUAL_FINALIZATION ${PROJECT_SOURCES})
+#    target_link_libraries(PasswordGenerator ${Boost_LIBRARIES})
+#endif()
+
 set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
         mainwindow.h
+        password_generator_engine.h
+        password_generator_engine.cpp
         mainwindow.ui
 )
 
