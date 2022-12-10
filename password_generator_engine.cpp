@@ -11,7 +11,7 @@ password_generator_engine()
 
 }
 
-password_generator_engine &password_generator_engine::create(int l, bool u, bool a, bool s, bool n)
+password_generator_engine &password_generator_engine::get(int l, bool u, bool a, bool s, bool n)
 {
     static password_generator_engine res(l,u,a,s,n);
     return res;
@@ -24,6 +24,10 @@ password_generator_engine(int l, bool u, bool a, bool s, bool n)
     , m_lowercase(a)
     , m_special_char(s)
     , m_numbers(n)
+    , s_numbers("0123456789")
+    , s_upper_characters("ABCDEFGHIJKLMNOQPRSTUYWVZX")
+    , s_lower_characters("abcdefghijklmnoqprstuvwyzx")
+    , s_special_characters("!@#$^&*?")
 {
 
 }
@@ -120,7 +124,13 @@ void password_generator_engine::setS_special_characters(const std::string &newS_
 
 std::string password_generator_engine::generatePassword()
 {
-    std::string s;
+    std::string s = "";
+
+    if (!m_upercase && !m_lowercase && !m_special_char && !m_numbers)
+    {
+        return s;
+    }
+
     if (m_numbers) {
         s += s_numbers;
     }
@@ -134,7 +144,7 @@ std::string password_generator_engine::generatePassword()
         s += s_special_characters;
     }
 
-    std::string res;
+    std::string res = "";
     for (int i = 0; i < length(); ++i) {
         int k = rand() % s.size();
         res += s[k];

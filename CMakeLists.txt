@@ -29,6 +29,8 @@ set(PROJECT_SOURCES
         mainwindow.h
         password_generator_engine.h
         password_generator_engine.cpp
+        generator_widget.h
+        generator_widget.cpp
         mainwindow.ui
 )
 

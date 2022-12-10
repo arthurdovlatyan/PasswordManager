@@ -34,7 +34,7 @@ public:
      * @param[in] s special chars
      * @param[in] n numbers
      */
-    password_generator_engine& create(int l = 10, bool u = true, bool a = true, bool s = true, bool n = true);
+    static password_generator_engine& get(int l = 10, bool u = true, bool a = true, bool s = true, bool n = true);
 
     // getters and setters
     int length() const;
